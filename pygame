@@ -1,0 +1,52 @@
+import pygame
+pygame.init()
+
+win = pygame.display.set_mode((500, 500))
+
+pygame.display.set_caption("Classical Tag")
+
+x = 50
+y = 50
+width = 40
+height = 60
+vel = 5
+
+run = true
+while run:
+    pygame.time.delay(100)
+    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = false
+    
+    keys = pygame.keys.get_pressed
+    
+    if keys[pygame.K_a]:
+        x -= vel
+    if keys[pygame.K_d]:
+        x += vel
+    if keys[pygame.K_w]:
+        y -= vel
+    if keys[pygame.K_s[:
+        y += vel
+        
+    win.fill((0, 0, 0))
+    pygame.draw.rect(win, (255, 0 255), (x, y, width, height))
+    pygame.display.update
+
+
+pygame.quit()            
+            
+if(Mr. G, John, Stuart, Mrs. Durham(touch, Marnix, Lee, Nate))
+if touch(10, 9, 9, 8, 8, 7, 7, 6, 6, 5, 5, 4, 3, 3, 2, 2, 1, 1, 0)
+if zero break
+def stay
+stay(Marnix, Lee, Nate)
+
+
+   if touch (Marnix, Lee, Nate)
+   Break
+        
+        keys = pygame.keys.get_pressed
+            
+            
