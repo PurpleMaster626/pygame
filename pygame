@@ -5,12 +5,67 @@ win = pygame.display.set_mode((500, 500))
 
 pygame.display.set_caption("Classical Tag")
 
-x = 50
-y = 50
-width = 40
-height = 60
-vel = 5
+def sprite_sheet_load(colorKey, spriteLocX, spriteLocY, spriteSizeX, spriteSizeY, fileName):
+    '''Purpose: to extract a sprite from a sprite sheet at the chosen location'''
+    '''credit to Stackover flow user hammyThePig for original code'''
 
+    sheet = pygame.image.load(fileName).convert() #loads up the sprite sheet. convert makes sure the pixel format is coherent
+    sheet.set_colorkey(colorKey) #sets the color key
+
+    sprite = sheet.subsurface(pygame.Rect(spriteLocX, spriteLocY, spriteSizeX, spriteSizeY)) #grabs the sprite at this location
+
+    return sprite
+    
+    playerImages = []   #lists for the player images
+    playerDeathImages = [] # ""
+
+    ###Image Gathering Section VVV ####
+
+    spriteXLoc = 0 #starting x location for the sprite
+    spriteYLoc = 0 #starting y location for the sprite
+    spriteXSize = 64
+    spriteYSize = 64
+
+    #Grab the images for the main character's walking poses
+for y in range(0,9): #handle the columns of sprite sheet
+    for x in range(0,4): #handle the rows of sprite sheet
+                playerImages.append(sprite_sheet_load(black, spriteXLoc, spriteYLoc, spriteXSize, spriteYSize, "mainCharacter.png"))
+                spriteXLoc += spriteXSize
+    spriteXLoc = 0 #reset the inital x value
+    spriteYLoc += spriteYSize #increment the y value
+    
+    Traceback (most recent call last):
+      File "game.py", line 97, in <module>
+        player = Player() #create a player object
+      File "game.py", line 63, in __init__
+        playerImages.append(sprite_sheet_load(black, spriteXLoc, spriteYLoc, spriteXSize, spriteYSize, "mainCharacter.png"))
+      File "game.py", line 33, in sprite_sheet_load
+        sprite = sheet.subsurface(pygame.Rect(spriteLocX, spriteLocY, spriteSizeX, spriteSizeY)) #grabs the sprite at this location
+    ValueError: subsurface rectangle outside surface area
+
+            spriteXLoc = 0 #reset the inital x value
+            spriteYLoc += spriteYSize #increment the y value
+
+ScreenWidth = 500
+
+class player (object):
+    def_init_(self)
+
+
+
+
+x = 50
+y = 425
+width = 40
+height = 40
+vel = 5
+isJump = False
+JumpCount = 10
+left = False
+right = False
+walkcount = 0
+
+#mainloop
 run = true
 while run:
     pygame.time.delay(100)
@@ -19,17 +74,32 @@ while run:
         if event.type == pygame.QUIT:
             run = false
     
+    def redrawGamesMac():
+  
     keys = pygame.keys.get_pressed
     
-    if keys[pygame.K_a]:
+    if keys[pygame.K_a] and x > vel:
         x -= vel
-    if keys[pygame.K_d]:
+    if keys[pygame.K_d] and x < 500 - width - vel :
         x += vel
-    if keys[pygame.K_w]:
-        y -= vel
-    if keys[pygame.K_s[:
-        y += vel
-        
+    if not(isJump):
+        if keys[pygame.K_w] and y > vel:
+            y -= vel
+        if keys[pygame.K_s] and y < 500 - hieght - vel:
+            y += vel
+        if keys[pygame.K_Space]
+            isJump = True
+    else:
+        if JumpCount >= -10
+        neg = 1
+        if jumpCount < 0:
+            neg = -1
+            y -= (JumpCount ** 2) * 0.5 * neg
+            JumpCount -= 1
+        else:
+            isJump = False
+            JumpCount = 10
+
     win.fill((0, 255, 0))
     pygame.draw.rect(win, (255, 0 255), (x, y, width, height))
     pygame.display.update
